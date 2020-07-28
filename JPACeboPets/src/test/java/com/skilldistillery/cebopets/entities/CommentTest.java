@@ -12,15 +12,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class CommentTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Comment comment;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("CeboPetsPU");
+		
 	}
 
 	@AfterAll
@@ -31,23 +32,21 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		comment = em.find(Comment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		comment = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(user);
-		assertEquals("tpapp", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("Toni", user.getFirstName());
-		assertEquals("Papp", user.getLastName());
-		assertTrue(user.getEnabled());
+		assertNotNull(comment);
+		assertEquals("Um, what the hell? Our CeboPets are dating.", comment.getContent());
+		assertEquals("2020-07-21 00:00:00.0", comment.getCreateDate().toString());
+		
 	}
 
 }
