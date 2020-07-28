@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class GuildTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Guild guild;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,23 +31,21 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		guild = em.find(Guild.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		guild = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(user);
-		assertEquals("tpapp", user.getUsername());
-		assertEquals("admin", user.getPassword());
-		assertEquals("Toni", user.getFirstName());
-		assertEquals("Papp", user.getLastName());
-		assertTrue(user.getEnabled());
+		assertNotNull(guild);
+		assertEquals("Anime Hangout", guild.getName());
+		assertEquals("A hangout for anime luvers     uwu", guild.getDescription());
+		assertEquals("2020-07-21 00:00:00.0", guild.getCreateDate().toString());
 	}
 
 }
