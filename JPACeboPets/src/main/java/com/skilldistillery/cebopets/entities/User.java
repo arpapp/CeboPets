@@ -1,10 +1,14 @@
 package com.skilldistillery.cebopets.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -24,6 +28,27 @@ public class User {
 	private String lastName;
 	
 	private Boolean enabled;
+	
+	@OneToMany(mappedBy="creatorUser")
+	private List <Post> posts;
+	
+	@OneToMany(mappedBy="user")
+	private List <Comment> comments;
+	
+	@ManyToMany(mappedBy="users")
+	private List <Guild> guilds;
+	
+	@OneToMany(mappedBy="user")
+	private List <Guild> guildsCreated;
+	
+	@OneToMany(mappedBy="user")
+	private List <CeboPet> cebopets;
+	
+	@OneToMany(mappedBy="creatorUser")
+	private List <Event> createdEvents;
+	
+	@ManyToMany(mappedBy="usersAttending")
+	private List <Event> events;
 	
 	private User() {}
 
@@ -83,6 +108,62 @@ public class User {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Guild> getGuilds() {
+		return guilds;
+	}
+
+	public void setGuilds(List<Guild> guilds) {
+		this.guilds = guilds;
+	}
+
+	public List<Guild> getGuildsCreated() {
+		return guildsCreated;
+	}
+
+	public void setGuildsCreated(List<Guild> guildsCreated) {
+		this.guildsCreated = guildsCreated;
+	}
+
+	public List<CeboPet> getCebopets() {
+		return cebopets;
+	}
+
+	public void setCebopets(List<CeboPet> cebopets) {
+		this.cebopets = cebopets;
+	}
+
+	public List<Event> getCreatedEvents() {
+		return createdEvents;
+	}
+
+	public void setCreatedEvents(List<Event> createdEvents) {
+		this.createdEvents = createdEvents;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	@Override

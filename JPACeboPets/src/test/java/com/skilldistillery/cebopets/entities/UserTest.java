@@ -48,6 +48,8 @@ class UserTest {
 		assertEquals("Toni", user.getFirstName());
 		assertEquals("Papp", user.getLastName());
 		assertTrue(user.getEnabled());
+//		assertEquals("Is your cebopet looking for a relationship?", user.getPosts().get(0).getTitle());
+		assertEquals("Anime Hangout", user.getGuilds().get(0).getName());
 	}
 
 }

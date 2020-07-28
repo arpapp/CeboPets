@@ -46,6 +46,8 @@ class GuildTest {
 		assertEquals("Anime Hangout", guild.getName());
 		assertEquals("A hangout for anime luvers     uwu", guild.getDescription());
 		assertEquals("2020-07-21 00:00:00.0", guild.getCreateDate().toString());
+		assertEquals("Tabatha", guild.getUser().getFirstName());
+		assertEquals("Flores", guild.getUser().getLastName());
 	}
 
 }

@@ -1,12 +1,17 @@
 package com.skilldistillery.cebopets.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -27,6 +32,14 @@ public class Guild {
 	
 	@Column(name="picture_url")
 	private String pictureUrl;
+	
+	@ManyToOne
+	@JoinColumn(name="creator_user_id")
+	private User user;
+	
+	@ManyToMany
+	@JoinTable(name="user_has_guild")
+	private List <User> users;
 
 	
 	public Guild() {};
@@ -78,6 +91,24 @@ public class Guild {
 
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
