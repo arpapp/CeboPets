@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `cebopet` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `hunger_level` INT NOT NULL,
-  `gender` ENUM('MALE', 'FEMALE', 'NONBINARY', 'GENDER FLUID', 'OTHER') NOT NULL,
+  `gender` ENUM('MALE', 'FEMALE', 'NONBINARY', 'GENDERFLUID', 'OTHER') NOT NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
   `relationship_id` INT NULL,
   `breed_id` INT NOT NULL,

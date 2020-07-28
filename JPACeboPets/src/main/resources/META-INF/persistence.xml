@@ -9,8 +9,7 @@
     </provider>
 
 		<class>com.skilldistillery.cebopets.entities.User</class>
-
-
+		<class>com.skilldistillery.cebopets.entities.CeboPet</class>
 		
 
 		<properties>
