@@ -31,6 +31,13 @@ public class CeboPet {
 	@JoinColumn(name="breed_id")
 	private Breed breed;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="relastionship_id")
+	private Relationship relationship;
 
 	public CeboPet() {
 		super();
@@ -93,6 +100,24 @@ public class CeboPet {
 
 	public void setBreed(Breed breed) {
 		this.breed = breed;
+	}
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Relationship getRelationship() {
+		return relationship;
+	}
+
+	public void setRelationship(Relationship relationship) {
+		this.relationship = relationship;
 	}
 
 	@Override
