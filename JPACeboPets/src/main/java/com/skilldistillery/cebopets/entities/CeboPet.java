@@ -36,7 +36,7 @@ public class CeboPet {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="relastionship_id")
+	@JoinColumn(name="relationship_id")
 	private Relationship relationship;
 
 	public CeboPet() {

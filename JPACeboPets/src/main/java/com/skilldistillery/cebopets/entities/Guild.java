@@ -38,7 +38,9 @@ public class Guild {
 	private User user;
 	
 	@ManyToMany
-	@JoinTable(name="user_has_guild")
+	@JoinTable(name="user_has_guild",
+	joinColumns=@JoinColumn(name="guild_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List <User> users;
 
 	
