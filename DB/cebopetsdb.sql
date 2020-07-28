@@ -318,7 +318,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cebopetsdb`;
-INSERT INTO `post` (`id`, `title`, `description`, `create_date`, `update_date`, `creator_user_id`, `guild_id`) VALUES (1, 'Is your cebopet looking for a relationship?', 'Hi, my StinkBob FartPants is looking to date. Please comment if interested.', '2020-07-21', NULL, 1, NULL);
+INSERT INTO `post` (`id`, `title`, `description`, `create_date`, `update_date`, `creator_user_id`, `guild_id`) VALUES (1, 'Is your cebopet looking for a relationship?', 'Hi, my StinkBob FartPants is looking to date. Please comment if interested.', '2020-07-21', NULL, 1, 1);
+INSERT INTO `post` (`id`, `title`, `description`, `create_date`, `update_date`, `creator_user_id`, `guild_id`) VALUES (2, 'Anime for CeboPets', 'My ceboplet will be the stah-are', '2020-07-21', NULL, 2, NULL);
 
 COMMIT;
 

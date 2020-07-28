@@ -1,12 +1,17 @@
 package com.skilldistillery.cebopets.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Event {
@@ -24,7 +29,19 @@ public class Event {
 	
 	private boolean enabled;
 	
+	@ManyToOne
+	@JoinColumn(name="guild_id")
+	private Guild guild;
 	
+	@ManyToOne
+	@JoinColumn(name="creator_user_id")
+	private User creatorUser;
+	
+	@ManyToMany
+	@JoinTable(name="user_has_event",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="event_id"))
+	private List<User> usersAttending;
 
 	public Event() {
 		super();
@@ -99,6 +116,42 @@ public class Event {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+
+
+	public Guild getGuild() {
+		return guild;
+	}
+
+
+
+	public void setGuild(Guild guild) {
+		this.guild = guild;
+	}
+
+
+
+	public User getCreator_user() {
+		return creatorUser;
+	}
+
+
+
+	public void setCreator_user(User creatorUser) {
+		this.creatorUser = creatorUser;
+	}
+
+
+
+	public List<User> getUsersAttending() {
+		return usersAttending;
+	}
+
+
+
+	public void setUsersAttending(List<User> usersAttending) {
+		this.usersAttending = usersAttending;
 	}
 
 

@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CeboPet {
@@ -24,6 +26,10 @@ public class CeboPet {
 	private Gender gender;
 	
 	private boolean enabled;
+	
+	@ManyToOne
+	@JoinColumn(name="breed_id")
+	private Breed breed;
 	
 
 	public CeboPet() {
@@ -77,6 +83,16 @@ public class CeboPet {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	
+
+	public Breed getBreed() {
+		return breed;
+	}
+
+	public void setBreed(Breed breed) {
+		this.breed = breed;
 	}
 
 	@Override
