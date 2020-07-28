@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Post {
@@ -26,7 +28,13 @@ public class Post {
 	@Column(name="update_date")
 	private Date updateDate;
 
+	@ManyToOne
+	@JoinColumn(name="creator_user_id")
+	private User creatorUser;
 	
+	@ManyToOne
+	@JoinColumn(name="guild_id")
+	private Guild guild;
 
 	public Post() {
 		super();
@@ -101,6 +109,30 @@ public class Post {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+
+
+	public User getCreatorUser() {
+		return creatorUser;
+	}
+
+
+
+	public void setCreatorUser(User creatorUser) {
+		this.creatorUser = creatorUser;
+	}
+
+
+
+	public Guild getGuild() {
+		return guild;
+	}
+
+
+
+	public void setGuild(Guild guild) {
+		this.guild = guild;
 	}
 
 

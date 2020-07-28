@@ -47,5 +47,16 @@ class PostTest {
 		assertEquals("Hi, my StinkBob FartPants is looking to date. Please comment if interested.", post.getDescription());
 		assertEquals("2020-07-21 00:00:00.0", post.getCreateDate().toString());
 	}
+	
+	@Test
+	void test_relationshiip_mapping_user_created() {
+		assertNotNull(post);
+		assertEquals("tpapp", post.getCreatorUser().getUsername());
+	}
 
+	@Test
+	void test_relationship_mapping_guild() {
+		assertNotNull(post);
+		assertEquals("Anime Hangout", post.getGuild().getName());
+	}
 }

@@ -2,6 +2,7 @@ package com.skilldistillery.cebopets.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -47,6 +48,25 @@ class EventTest {
 		assertEquals("Anime Roleplay", event.getTitle());
 		assertEquals("Everyone picks an anime character to roleplay over Zoom EXCEPT Naruto because I am Naruto.", event.getDescription());
 		assertEquals("2020-07-21T13:00", event.getDateTime().toString());
+	}
+	
+	@Test
+	void test_relationship_mapping_guild() {
+		assertNotNull(event);
+		assertEquals("Anime Hangout", event.getGuild().getName());
+		assertEquals("A hangout for anime luvers     uwu", event.getGuild().getDescription());
+	}
+	
+	@Test
+	void test_relationship_mapping_user_created() {
+		assertNotNull(event);
+		assertEquals("tflores", event.getCreator_user().getUsername());
+	}
+	
+	@Test
+	void test_relationship_mapping_users_attending() {
+		assertNotNull(event);
+		assertTrue(event.getUsersAttending().size() > 0);
 	}
 
 }

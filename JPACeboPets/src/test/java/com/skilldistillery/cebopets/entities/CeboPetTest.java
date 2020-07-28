@@ -48,5 +48,23 @@ class CeboPetTest {
 		assertEquals(10, ceboPet.getHungerLevel());
 		assertEquals(Gender.MALE, ceboPet.getGender());
 	}
+	
+	@Test
+	void test_relationship_mapping_breed() {
+		assertNotNull(ceboPet);
+		assertEquals("Kacheeky", ceboPet.getBreed().getName());
+	}
+	
+	@Test
+	void test_user_mapping() {
+		assertNotNull(ceboPet);
+		assertEquals("tpapp", ceboPet.getUser().getUsername());
+	}
+	
+	@Test
+	void test_relationship_mapping() {
+		assertNotNull(ceboPet);
+		assertEquals(Status.COMPLICATED, ceboPet.getRelationship().getStatus());
+	}
 
 }

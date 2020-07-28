@@ -1,4 +1,4 @@
-package com.skilldistillery.cebopets.entities;
+ package com.skilldistillery.cebopets.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,6 +46,12 @@ class BreedTest {
 		assertEquals("Kacheeky", breed.getName());
 		assertEquals("A shy and peaceful cebopet.", breed.getTrait());
 		
+	}
+	
+	@Test
+	void test_cebopet_relationship_mapping() {
+		assertNotNull(breed);
+		assertTrue(breed.getCeboPets().size() > 0);
 	}
 
 }

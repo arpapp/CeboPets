@@ -1,10 +1,13 @@
 package com.skilldistillery.cebopets.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Breed {
@@ -20,7 +23,8 @@ public class Breed {
 	
 	private String trait;
 	
-	
+	@OneToMany(mappedBy="breed")
+	private List<CeboPet> ceboPets;
 
 	public Breed() {
 		super();
@@ -82,6 +86,20 @@ public class Breed {
 
 	public void setTrait(String trait) {
 		this.trait = trait;
+	}
+	
+	
+
+
+
+	public List<CeboPet> getCeboPets() {
+		return ceboPets;
+	}
+
+
+
+	public void setCeboPets(List<CeboPet> ceboPets) {
+		this.ceboPets = ceboPets;
 	}
 
 
