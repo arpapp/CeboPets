@@ -10,6 +10,12 @@
 
 		<class>com.skilldistillery.cebopets.entities.User</class>
 		<class>com.skilldistillery.cebopets.entities.CeboPet</class>
+		<class>com.skilldistillery.cebopets.entities.Breed</class>
+		<class>com.skilldistillery.cebopets.entities.Comment</class>
+		<class>com.skilldistillery.cebopets.entities.Event</class>
+		<class>com.skilldistillery.cebopets.entities.Guild</class>
+		<class>com.skilldistillery.cebopets.entities.Post</class>
+		<class>com.skilldistillery.cebopets.entities.Relationship</class>
 		
 
 		<properties>

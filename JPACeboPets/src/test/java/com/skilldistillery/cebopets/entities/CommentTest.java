@@ -46,6 +46,8 @@ class CommentTest {
 		assertNotNull(comment);
 		assertEquals("Um, what the hell? Our CeboPets are dating.", comment.getContent());
 		assertEquals("2020-07-21 00:00:00.0", comment.getCreateDate().toString());
+		assertEquals("Is your cebopet looking for a relationship?", comment.getPost().getTitle());
+		assertEquals("Tabatha", comment.getUser().getFirstName());
 		
 	}
 

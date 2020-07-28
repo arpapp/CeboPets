@@ -1,6 +1,7 @@
 package com.skilldistillery.cebopets.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -30,6 +32,9 @@ public class Relationship {
 	
 	@Column(name="marriage_date")
 	private Date marriageDate;
+	
+	@OneToMany(mappedBy="relationship")
+	private List<CeboPet> ceboPets;
 
 	public Relationship() {}
 
@@ -80,6 +85,15 @@ public class Relationship {
 
 	public void setMarriageDate(Date marriageDate) {
 		this.marriageDate = marriageDate;
+	}
+	
+
+	public List<CeboPet> getCeboPets() {
+		return ceboPets;
+	}
+
+	public void setCeboPets(List<CeboPet> ceboPets) {
+		this.ceboPets = ceboPets;
 	}
 
 	@Override

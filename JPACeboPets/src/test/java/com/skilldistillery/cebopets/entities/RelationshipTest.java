@@ -47,6 +47,7 @@ class RelationshipTest {
 		assertNotNull(relationship);
 		assertEquals(Status.COMPLICATED, relationship.getStatus());
 		assertTrue(relationship.getEnabled());
+		assertEquals("PinkKacheeky", relationship.getCeboPets().get(1).getName());
 	}
 
 }
