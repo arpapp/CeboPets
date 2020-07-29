@@ -8,7 +8,7 @@ import com.skilldistillery.cebopets.entities.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer>{
 	
-	Post findByIdAndUserUsername(int postId, String username);
+	Post findByIdAndCreatorUserUsername(int postId, String username);
 	
 	
 }
