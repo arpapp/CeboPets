@@ -42,7 +42,7 @@ public class User {
 	private List <Guild> guildsCreated;
 	
 	@OneToMany(mappedBy="user")
-	private List <CeboPet> cebopets;
+	private List <Cebopet> cebopets;
 	
 	@OneToMany(mappedBy="creatorUser")
 	private List <Event> createdEvents;
@@ -142,11 +142,11 @@ public class User {
 		this.guildsCreated = guildsCreated;
 	}
 
-	public List<CeboPet> getCebopets() {
+	public List<Cebopet> getCebopets() {
 		return cebopets;
 	}
 
-	public void setCebopets(List<CeboPet> cebopets) {
+	public void setCebopets(List<Cebopet> cebopets) {
 		this.cebopets = cebopets;
 	}
 

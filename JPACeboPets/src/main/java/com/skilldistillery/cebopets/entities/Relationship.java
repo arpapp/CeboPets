@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +34,8 @@ public class Relationship {
 	@Column(name="marriage_date")
 	private Date marriageDate;
 	
-	@OneToMany(mappedBy="relationship")
-	private List<CeboPet> ceboPets;
+	@OneToMany(mappedBy="relationship", fetch = FetchType.EAGER)
+	private List<Cebopet> ceboPets;
 
 	public Relationship() {}
 
@@ -88,11 +89,11 @@ public class Relationship {
 	}
 	
 
-	public List<CeboPet> getCeboPets() {
+	public List<Cebopet> getCeboPets() {
 		return ceboPets;
 	}
 
-	public void setCeboPets(List<CeboPet> ceboPets) {
+	public void setCeboPets(List<Cebopet> ceboPets) {
 		this.ceboPets = ceboPets;
 	}
 

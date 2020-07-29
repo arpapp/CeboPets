@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CeboPetTest {
+class CebopetTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private CeboPet ceboPet;
+	private Cebopet ceboPet;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,7 +32,7 @@ class CeboPetTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		ceboPet = em.find(CeboPet.class, 1);
+		ceboPet = em.find(Cebopet.class, 1);
 	}
 
 	@AfterEach
