@@ -24,7 +24,7 @@ public class Breed {
 	private String trait;
 	
 	@OneToMany(mappedBy="breed")
-	private List<CeboPet> ceboPets;
+	private List<Cebopet> ceboPets;
 
 	public Breed() {
 		super();
@@ -92,13 +92,13 @@ public class Breed {
 
 
 
-	public List<CeboPet> getCeboPets() {
+	public List<Cebopet> getCeboPets() {
 		return ceboPets;
 	}
 
 
 
-	public void setCeboPets(List<CeboPet> ceboPets) {
+	public void setCeboPets(List<Cebopet> ceboPets) {
 		this.ceboPets = ceboPets;
 	}
 

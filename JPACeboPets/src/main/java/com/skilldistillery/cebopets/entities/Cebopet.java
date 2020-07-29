@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CeboPet {
+public class Cebopet {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,11 +39,11 @@ public class CeboPet {
 	@JoinColumn(name="relationship_id")
 	private Relationship relationship;
 
-	public CeboPet() {
+	public Cebopet() {
 		super();
 	}
 
-	public CeboPet(int id, String name, int hungerLevel, Gender gender, boolean enabled) {
+	public Cebopet(int id, String name, int hungerLevel, Gender gender, boolean enabled) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -140,7 +140,7 @@ public class CeboPet {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CeboPet other = (CeboPet) obj;
+		Cebopet other = (Cebopet) obj;
 		if (enabled != other.enabled)
 			return false;
 		if (gender != other.gender)
