@@ -24,7 +24,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Post createPost(Post post, String username) {
-		User user = userRepo.findUserByUserUsername(username);
+		User user = userRepo.findUserByUsername(username);
 		post.setCreatorUser(user);
 		postRepo.saveAndFlush(post);
 		return post;
@@ -42,7 +42,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Post updatePost(Post post, int postId, String username) {
-		Post managedPost = postRepo.findByIdAndUserUsername(postId, username);
+		Post managedPost = postRepo.findByIdAndCreatorUserUsername(postId, username);
 		if (managedPost != null) {
 			managedPost.setTitle(post.getTitle());
 			managedPost.setDescription(post.getDescription());
@@ -55,7 +55,7 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public boolean deletePost(int postId, String username) {
 		boolean deleted = true;
-		Post postToDelete = postRepo.findByIdAndUserUsername(postId, username);
+		Post postToDelete = postRepo.findByIdAndCreatorUserUsername(postId, username);
 		if (postToDelete != null) {
 			postRepo.delete(postToDelete);
 			return deleted;

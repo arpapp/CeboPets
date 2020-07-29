@@ -6,7 +6,7 @@ import com.skilldistillery.cebopets.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	User findUserByUserUsername(String username);
+	User findUserByUsername(String username);
 	
 
 }
