@@ -15,10 +15,10 @@ import com.skilldistillery.cebopets.repositories.UserRepository;
 public class PostServiceImpl implements PostService {
 	
 	@Autowired 
-	PostRepository postRepo;
+	private PostRepository postRepo;
 	
 	@Autowired
-	UserRepository userRepo;
+	private UserRepository userRepo;
 	
 	
 
