@@ -1,8 +1,12 @@
 package com.skilldistillery.cebopets.services;
 
+import java.util.List;
+
 import com.skilldistillery.cebopets.entities.Event;
 
 public interface EventService {
+	
+	List<Event> allEvents();
 	
 	Event event(int eventId);
 	
@@ -10,6 +14,6 @@ public interface EventService {
 	
 	Event updateEvent(Event event, int eventId, String username);
 		
-	Boolean deleteEvent(int eventId);
+	Boolean deleteEvent(int eventId, String username);
 
 }
