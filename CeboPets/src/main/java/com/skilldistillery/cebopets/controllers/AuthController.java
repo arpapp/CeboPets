@@ -38,8 +38,8 @@ public class AuthController {
 	@GetMapping("/authenticate")
 	// principal checks the username/pw - if they are valid depending on encoder
 	public Principal authenticate(Principal principal) {
+		System.out.println("here");
 	    return principal;
 	}
-	
 
 }
