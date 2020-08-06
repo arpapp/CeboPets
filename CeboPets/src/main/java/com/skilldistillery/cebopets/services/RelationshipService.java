@@ -2,7 +2,6 @@ package com.skilldistillery.cebopets.services;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.skilldistillery.cebopets.entities.Relationship;
 
