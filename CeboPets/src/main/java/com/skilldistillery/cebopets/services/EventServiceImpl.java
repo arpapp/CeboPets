@@ -1,5 +1,6 @@
 package com.skilldistillery.cebopets.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,23 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public Boolean deleteEvent(int eventId) {
+	public Boolean deleteEvent(int eventId, String username) {
 		boolean eventDeleted = true;
-		Optional <Event> eventOpt = eventRepo.findById(eventId);
-		Event eventToDelete = eventOpt.get();
+		Event eventToDelete = eventRepo.findByCreatorUserUsernameAndId(username, eventId);
 		if (eventToDelete != null) {
 			eventRepo.delete(eventToDelete);
 			return eventDeleted;
 		}
 		return !eventDeleted;
+	}
+
+	@Override
+	public List<Event> allEvents() {
+		List<Event> events = eventRepo.findAll();
+		if (events != null) {
+			return events;
+		}
+		return null;
 	}
 
 }
