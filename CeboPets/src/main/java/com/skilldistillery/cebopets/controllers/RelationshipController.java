@@ -68,7 +68,7 @@ public class RelationshipController {
 		return relationship;
 	}
 
-	@PutMapping("/relationship/{relationshipId}")
+	@PutMapping("/relationship/{relationshipId}/disable")
 	public void updateRelationship(@RequestBody Relationship relationship, @PathVariable int relationshipId,
 			HttpServletResponse res) {
 		try {

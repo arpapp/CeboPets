@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cebopets.entities.Comment;
+import com.skilldistillery.cebopets.entities.Post;
 import com.skilldistillery.cebopets.repositories.CommentRepository;
+import com.skilldistillery.cebopets.repositories.PostRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	private CommentRepository commentRepo;
+	@Autowired
+	private PostRepository postRepo;
 
 	@Override
 	public List<Comment> findAllComments() {
@@ -31,17 +35,18 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public Comment createComment(Comment comment) {
+	public Comment createComment(Comment comment, int postId) {
+		Optional<Post> postOpt = postRepo.findById(postId);
+		Post post = postOpt.get();
+		comment.setPost(post);
 		commentRepo.saveAndFlush(comment);
 		return comment;
 	}
 
 	@Override
-	public Comment updateComment(int id, Comment comment) {
-		Optional<Comment> commentOpt = commentRepo.findById(id);
-		Comment managedComment = null;
-		if(commentOpt.isPresent()) {
-			managedComment = commentOpt.get();
+	public Comment updateComment(int commentId, Comment comment, int postId) {
+		Comment managedComment = commentRepo.findByIdAndPostId(commentId, postId);
+		if(managedComment != null) {
 			managedComment.setContent(comment.getContent());
 			commentRepo.saveAndFlush(managedComment);
 		}

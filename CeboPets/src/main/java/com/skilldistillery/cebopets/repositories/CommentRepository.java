@@ -8,4 +8,5 @@ import com.skilldistillery.cebopets.entities.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	List<Comment> findByPostId(int postId);
+	Comment findByIdAndPostId(int commentId, int postId);
 }
