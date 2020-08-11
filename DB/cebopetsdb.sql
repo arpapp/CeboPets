@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
+  `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -266,8 +267,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cebopetsdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `enabled`) VALUES (1, 'tpapp', '$2a$10$yCcNV79QkFYwlL9kSqCC4eGSrhkI1/ofG.o8vCh0g5OdwSdV7bwre', 'Toni', 'Papp', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `enabled`) VALUES (2, 'tflores', '$2a$10$yCcNV79QkFYwlL9kSqCC4eGSrhkI1/ofG.o8vCh0g5OdwSdV7bwre', 'Tabatha', 'Flores', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `enabled`, `role`) VALUES (1, 'tpapp', '$2a$10$yCcNV79QkFYwlL9kSqCC4eGSrhkI1/ofG.o8vCh0g5OdwSdV7bwre', 'Toni', 'Papp', 1, 'standard');
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `enabled`, `role`) VALUES (2, 'tflores', '$2a$10$yCcNV79QkFYwlL9kSqCC4eGSrhkI1/ofG.o8vCh0g5OdwSdV7bwre', 'Tabatha', 'Flores', 1, 'standard');
 
 COMMIT;
 
