@@ -1,5 +1,6 @@
 package com.skilldistillery.cebopets.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +34,9 @@ public class CommentController {
 
 	@PostMapping("/posts/{postId}/comments")
 	public Comment makeAComment(@PathVariable int postId, @RequestBody Comment comment, HttpServletRequest req,
-			HttpServletResponse res) {
+			HttpServletResponse res, Principal principal) {
 		try {
-			comment = comServ.createComment(comment, postId);
+			comment = comServ.createComment(comment, postId, principal);
 			if (comment == null) {
 				res.setStatus(404);
 				comment = null;
@@ -56,10 +57,10 @@ public class CommentController {
 
 	@PutMapping("/posts/{postId}/comments/{commentId}")
 	public Comment updateThisComment(@PathVariable int postId, @PathVariable int commentId,
-			@RequestBody Comment comment, HttpServletRequest req, HttpServletResponse res) {
+			@RequestBody Comment comment, HttpServletRequest req, HttpServletResponse res, Principal principal) {
 		Comment updatedComment = null;
 		try {
-			updatedComment = comServ.updateComment(commentId, comment, postId);
+			updatedComment = comServ.updateComment(commentId, comment, postId, principal);
 			if (updatedComment == null) {
 				res.setStatus(404);
 				updatedComment = null;
