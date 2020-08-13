@@ -1,5 +1,6 @@
 package com.skilldistillery.cebopets.services;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cebopets.entities.Comment;
 import com.skilldistillery.cebopets.entities.Post;
+import com.skilldistillery.cebopets.entities.User;
 import com.skilldistillery.cebopets.repositories.CommentRepository;
 import com.skilldistillery.cebopets.repositories.PostRepository;
+import com.skilldistillery.cebopets.repositories.UserRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -18,6 +21,8 @@ public class CommentServiceImpl implements CommentService {
 	private CommentRepository commentRepo;
 	@Autowired
 	private PostRepository postRepo;
+	@Autowired 
+	private UserRepository userRepo;
 
 	@Override
 	public List<Comment> findAllComments() {
@@ -35,17 +40,19 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public Comment createComment(Comment comment, int postId) {
+	public Comment createComment(Comment comment, int postId, Principal principal) {
 		Optional<Post> postOpt = postRepo.findById(postId);
 		Post post = postOpt.get();
+		User user = userRepo.findUserByUsername(principal.getName());
 		comment.setPost(post);
+		comment.setUser(user);
 		commentRepo.saveAndFlush(comment);
 		return comment;
 	}
 
 	@Override
-	public Comment updateComment(int commentId, Comment comment, int postId) {
-		Comment managedComment = commentRepo.findByIdAndPostId(commentId, postId);
+	public Comment updateComment(int commentId, Comment comment, int postId, Principal principal) {
+		Comment managedComment = commentRepo.findByIdAndPostIdAndUserUsername(commentId, postId, principal.getName());
 		if(managedComment != null) {
 			managedComment.setContent(comment.getContent());
 			commentRepo.saveAndFlush(managedComment);
