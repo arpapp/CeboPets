@@ -19,7 +19,7 @@ public class CebopetServiceImpl implements CebopetService {
 	
 
 	@Override
-	public Cebopet cebopet(int id, String username) {
+	public Cebopet findCebopet(int id, String username) {
 		Cebopet cebopet = cebopetRepo.findByIdAndUserUsername(id, username);
 		return cebopet;
 	}
