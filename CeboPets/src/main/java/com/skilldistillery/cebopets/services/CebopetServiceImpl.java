@@ -3,12 +3,14 @@ package com.skilldistillery.cebopets.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.cebopets.entities.Cebopet;
 import com.skilldistillery.cebopets.entities.User;
 import com.skilldistillery.cebopets.repositories.CebopetRepository;
 import com.skilldistillery.cebopets.repositories.UserRepository;
 
+@Service
 public class CebopetServiceImpl implements CebopetService {
 	
 	@Autowired
@@ -19,7 +21,7 @@ public class CebopetServiceImpl implements CebopetService {
 	
 
 	@Override
-	public Cebopet cebopet(int id, String username) {
+	public Cebopet findCebopet(int id, String username) {
 		Cebopet cebopet = cebopetRepo.findByIdAndUserUsername(id, username);
 		return cebopet;
 	}

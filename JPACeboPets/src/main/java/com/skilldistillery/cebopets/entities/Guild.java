@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -42,6 +43,12 @@ public class Guild {
 	joinColumns=@JoinColumn(name="guild_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List <User> users;
+	
+	@OneToMany(mappedBy ="guild")
+	private List<Event> events;
+	
+	@OneToMany(mappedBy="guild")
+	private List<Post> posts;
 
 	
 	public Guild() {};
@@ -111,6 +118,26 @@ public class Guild {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+	
+	
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

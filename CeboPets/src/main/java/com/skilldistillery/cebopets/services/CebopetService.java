@@ -6,7 +6,7 @@ import com.skilldistillery.cebopets.entities.Cebopet;
 
 public interface CebopetService {
 	
-	Cebopet cebopet(int id, String username);
+	Cebopet findCebopet(int id, String username);
 	
 	List<Cebopet> findAllCebopets();
 	
