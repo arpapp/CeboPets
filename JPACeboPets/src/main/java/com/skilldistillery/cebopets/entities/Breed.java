@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Breed {
 	
@@ -24,6 +26,7 @@ public class Breed {
 	private String trait;
 	
 	@OneToMany(mappedBy="breed")
+	@JsonIgnore
 	private List<Cebopet> ceboPets;
 
 	public Breed() {

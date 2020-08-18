@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Cebopet {
 	
@@ -32,10 +34,12 @@ public class Cebopet {
 	private Breed breed;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"posts", "comments", "guilds","cebopets","events","guildsCreated","createdEvents"})
 	@JoinColumn(name="user_id")
 	private User user;
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"ceboPets"})
 	@JoinColumn(name="relationship_id")
 	private Relationship relationship;
 
