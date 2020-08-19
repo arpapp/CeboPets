@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.skilldistillery.cebopets.entities.Cebopet;
 import com.skilldistillery.cebopets.entities.User;
@@ -35,6 +36,8 @@ public class CebopetServiceImpl implements CebopetService {
 	public Cebopet createCebopet(Cebopet cebopet, String username) {
 		User user = userRepo.findUserByUsername(username);
 		cebopet.setUser(user);
+		cebopet.setEnabled(true);
+		cebopet.setHungerLevel(10);
 		cebopetRepo.saveAndFlush(cebopet);
 		return cebopet;
 	}
@@ -50,7 +53,7 @@ public class CebopetServiceImpl implements CebopetService {
 			cebopetRepo.saveAndFlush(managedCebopet);
 			return managedCebopet;
 		}
-		return null;
+		return managedCebopet;
 	}
 
 	@Override
@@ -59,6 +62,7 @@ public class CebopetServiceImpl implements CebopetService {
 		Cebopet cebopetToDisable = cebopetRepo.findByIdAndUserUsername(cebopetId, username);
 		if (cebopetToDisable != null) {
 			cebopetToDisable.setEnabled(false);
+			cebopetRepo.saveAndFlush(cebopetToDisable);
 			return disabled;
 		}
 		return !disabled;
