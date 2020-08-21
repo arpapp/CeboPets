@@ -45,6 +45,7 @@ public class GuildServiceImpl implements GuildService {
 			managedGuild.setDescription(guild.getDescription());
 			managedGuild.setName(guild.getName());
 			managedGuild.setPictureUrl(guild.getPictureUrl());
+			guildRepo.saveAndFlush(managedGuild);
 		}
 		return managedGuild;
 	}
