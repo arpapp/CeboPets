@@ -43,7 +43,7 @@ public class PostController {
 		return postSvc.allPostsIndex();
 	}
 	
-	@PostMapping
+	@PostMapping("/posts")
 	public Post create(@RequestBody Post post, Principal principal, HttpServletResponse res) {
 		Post newPost;
 		try {
@@ -57,7 +57,7 @@ public class PostController {
 		return newPost;
 	}
 	
-	@PutMapping
+	@PutMapping("posts/{id}")
 	public Post update(@PathVariable int id, @RequestBody Post post, Principal principal, HttpServletResponse res) {
 		try {
 			post = postSvc.updatePost(post, id, principal.getName());
@@ -73,7 +73,7 @@ public class PostController {
 		return post;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("posts/{postId}")
 	public void delete(@PathVariable int postId, Principal principal, HttpServletResponse res) {
 		try {
 			postSvc.deletePost(postId, principal.getName());
