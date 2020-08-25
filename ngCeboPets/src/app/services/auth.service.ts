@@ -55,52 +55,10 @@ export class AuthService {
     );
   }
 
-  logout() {
-    localStorage.removeItem('credentials');
-  }
-
-  checkLogin() {
-    if (localStorage.getItem('credentials')) {
-      return true;
-    }
-    return false;
-  }
-
   generateBasicAuthCredentials(username, password) {
     return btoa(`${username}:${password}`);
   }
 
-  getCredentials() {
-    return localStorage.getItem('credentials');
-  }
 
-  getLoggedInUser(){
-    console.log(this.loggedInUser);
-
-    return this.loggedInUser;
-  }
-
-  showUser() {
-    const credentials = this.getCredentials();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Basic ${credentials}`,
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    }
-    return this.http.get<User>(this.url + 'api/users/userpro', httpOptions).pipe(
-      tap((res) => {
-        console.log(res);
-        this.loggedInUser = res;
-        console.log(this.loggedInUser);
-
-      }),
-      catchError((err: any) => {
-
-        console.log(err);
-        return throwError('error in showUser() in auth service - cannot obtain user')
-      })
-      );
-    }
 }
 

@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Comment {
 	
@@ -27,10 +30,12 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name="post_id")
+	@JsonIgnore
 	private Post post;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@JsonIgnoreProperties({"posts","events","guilds","cebopets","comments","guildsCreated","createdEvents"})
 	private User user;
 
 	public Comment() {}

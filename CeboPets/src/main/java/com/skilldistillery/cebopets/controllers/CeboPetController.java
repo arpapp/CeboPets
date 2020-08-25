@@ -40,7 +40,7 @@ public class CeboPetController {
 		return cebopet;
 	}
 
-	@GetMapping("cebopet/{cebopetId}/relationship")
+	@GetMapping("cebopets/{cebopetId}/relationship")
 	public Relationship findCeppetRelationship(@PathVariable int cebopetId, Principal principal,
 			HttpServletResponse res) {
 		Cebopet cebopet;
@@ -68,9 +68,10 @@ public class CeboPetController {
 		}
 		return cebopet;
 	}
-	
+
 	@PutMapping("cebopets/{cebopetId}")
-	public Cebopet updateCebopet(@PathVariable int cebopetId,@RequestBody Cebopet cebopet, Principal principal, HttpServletResponse res) {
+	public Cebopet updateCebopet(@PathVariable int cebopetId, @RequestBody Cebopet cebopet, Principal principal,
+			HttpServletResponse res) {
 		try {
 			cebopet = serv.updateCebopet(cebopet, cebopetId, principal.getName());
 			res.setStatus(200);
@@ -81,12 +82,19 @@ public class CeboPetController {
 		}
 		return cebopet;
 	}
-	
+
 	@PutMapping("cebopets/{cebopetId}/disable")
 	public void disableCebopet(@PathVariable int cebopetId, Principal principal, HttpServletResponse res) {
-		Cebopet cebopet = serv.findCebopet(cebopetId, principal.getName());
-		cebopet.setEnabled(false);
-		res.setStatus(204);
+		try {
+			boolean disabled = serv.deleteCebopet(cebopetId, principal.getName());
+			if(disabled) {
+				res.setStatus(204);
+			}
+		} catch (Exception e) {
+			res.setStatus(404);
+			e.printStackTrace();
+		}
+		
 	}
 
 }

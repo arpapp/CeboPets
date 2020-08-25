@@ -68,7 +68,7 @@ public class GuildController {
 	public Guild updateGuild(@PathVariable int guildId, @RequestBody Guild guild, HttpServletResponse res) {
 		try {
 			guild = serv.updateGuild(guildId, guild);
-			res.setStatus(201);
+			res.setStatus(200);
 			if(guild == null) {
 				res.setStatus(404);
 			}

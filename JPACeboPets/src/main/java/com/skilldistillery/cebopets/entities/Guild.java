@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Guild {
 	
@@ -36,18 +38,22 @@ public class Guild {
 	
 	@ManyToOne
 	@JoinColumn(name="creator_user_id")
+	@JsonIgnoreProperties({"posts", "events", "guilds", "cebopets", "comments","guildsCreated", "createdEvents"})
 	private User user;
 	
 	@ManyToMany
 	@JoinTable(name="user_has_guild",
 	joinColumns=@JoinColumn(name="guild_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
+	@JsonIgnoreProperties({"posts", "events", "guilds", "cebopets", "comments","guildsCreated", "createdEvents"})
 	private List <User> users;
 	
 	@OneToMany(mappedBy ="guild")
+	@JsonIgnoreProperties({"guild","usersAttending", "creator_user"})
 	private List<Event> events;
 	
 	@OneToMany(mappedBy="guild")
+	@JsonIgnoreProperties({"guild", "creatorUser"})
 	private List<Post> posts;
 
 	

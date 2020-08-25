@@ -10,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Post {
 	
@@ -22,18 +27,22 @@ public class Post {
 	private String description;
 	
 	@Column(name="create_date")
+	@CreationTimestamp
 	private Date createDate;
 	
 	
 	@Column(name="update_date")
+	@UpdateTimestamp
 	private Date updateDate;
 
 	@ManyToOne
 	@JoinColumn(name="creator_user_id")
+	@JsonIgnoreProperties({"posts", "events", "guilds", "cebopets", "comments","guildsCreated", "createdEvents"})
 	private User creatorUser;
 	
 	@ManyToOne
 	@JoinColumn(name="guild_id")
+	@JsonIgnoreProperties({"user","users", "events", "posts"})
 	private Guild guild;
 
 	public Post() {
