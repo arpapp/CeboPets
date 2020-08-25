@@ -1,0 +1,10 @@
+<div>
+  <h4>Register:</h4>
+  <form #userRegister='ngForm'>
+    Username: <input type="text" name ="username" ngModel/>
+    Password: <input type="text" name="password" ngModel/>
+    First Name: <input type ="text" name="firstName" ngModel/>
+    Last Name: <input type = "text" name="lastName" ngModel/>
+    <button (click)="register(userRegister)">Submit</button>
+  </form>
+</div>

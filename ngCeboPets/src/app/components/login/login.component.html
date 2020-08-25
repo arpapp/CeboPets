@@ -1,0 +1,9 @@
+<form #userLogin='ngForm'>
+  <div class="row">
+    <div class="formGroup .col-sm-4" id="loginForm">
+        Username: <input type="text" name ="username" ngModel/>
+        Password: <input type="text" name="password" ngModel/>
+        <button (click)="login(userLogin)">Submit</button>
+    </div>
+  </div>
+</form>
