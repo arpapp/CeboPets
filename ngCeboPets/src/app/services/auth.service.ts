@@ -59,6 +59,10 @@ export class AuthService {
     return btoa(`${username}:${password}`);
   }
 
+  getCredentials() {
+    return localStorage.getItem('credentials');
+  }
+
 
 }
 

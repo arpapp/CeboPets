@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CreateCebopetComponent } from './components/create-cebopet/create-cebopet.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegisterComponent } from './components/register/register.component';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateCebopetComponent
   ],
   imports: [
     BrowserModule,

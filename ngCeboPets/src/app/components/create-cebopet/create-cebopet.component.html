@@ -1,0 +1,21 @@
+<div>
+  <form #newCebopet='ngForm'>
+    Name:<input type = "text" name="name" ngModel/>
+    Gender:
+
+    <select name="gender" ngModel>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+      <option value="NONBINARY">Non-binary</option>
+      <option value="GENDERFLUID">Gender fluid</option>
+      <option value="OTHER">Other</option>
+    </select>
+
+    Breed:
+      <select name="breed" ngModel>
+        <option value="Kacheeky">Kacheeky</option>
+      </select>
+
+      <button (click)='createCebopet(newCebopet)'>Submit</button>
+  </form>
+</div>

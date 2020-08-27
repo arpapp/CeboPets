@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Event {
 	
@@ -31,16 +33,19 @@ public class Event {
 	
 	@ManyToOne
 	@JoinColumn(name="guild_id")
+	@JsonIgnoreProperties({"users", "posts", "user", "events"})
 	private Guild guild;
 	
 	@ManyToOne
 	@JoinColumn(name="creator_user_id")
+	@JsonIgnoreProperties({"posts", "events", "guilds", "cebopets", "comments","guildsCreated", "createdEvents"})
 	private User creatorUser;
 	
 	@ManyToMany
 	@JoinTable(name="user_has_event",
 	joinColumns=@JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="event_id"))
+	@JsonIgnoreProperties({"posts", "events", "guilds", "cebopets", "comments","guildsCreated", "createdEvents"})
 	private List<User> usersAttending;
 
 	public Event() {
