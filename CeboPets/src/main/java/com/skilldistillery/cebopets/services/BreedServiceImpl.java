@@ -30,6 +30,11 @@ public class BreedServiceImpl implements BreedService {
 	public List<Breed> allBreeds() {
 		return breedRepo.findAll();
 	}
+
+	@Override
+	public Breed getBreedByName(String name) {
+		return breedRepo.findBreedByName(name);
+	}
 	
 	
 

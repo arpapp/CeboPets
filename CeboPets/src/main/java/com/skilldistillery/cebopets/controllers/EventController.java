@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,17 +22,19 @@ import com.skilldistillery.cebopets.services.EventService;
 
 @RestController
 @RequestMapping("api")
+@CrossOrigin({"*", "http://localhost:4211"})
+
 public class EventController {
 	
 	@Autowired
 	private EventService eventServ;
 	
-	@GetMapping("/events")
+	@GetMapping("events")
 	public List <Event> getEvents() {
 		return eventServ.allEvents();
 	}
 	
-	@GetMapping("/events/{eventId}")
+	@GetMapping("events/{eventId}")
 	public Event getEventById(@PathVariable int eventId, HttpServletResponse res) {
 		Event event = eventServ.event(eventId);
 		if (event == null) {

@@ -9,5 +9,7 @@ public interface BreedService {
 	Breed seeBreed(int breedId);
 	
 	List<Breed> allBreeds();
+	
+	Breed getBreedByName(String name);
 
 }

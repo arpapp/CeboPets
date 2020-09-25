@@ -29,6 +29,8 @@ public class User {
 	
 	private Boolean enabled;
 	
+	private String role;
+	
 	@OneToMany(mappedBy="creatorUser")
 	private List <Post> posts;
 	
@@ -52,7 +54,7 @@ public class User {
 	
 	private User() {}
 
-	public User(int id, String username, String password, String firstName, String lastName, Boolean enabled) {
+	public User(int id, String username, String password, String firstName, String lastName, Boolean enabled, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -60,6 +62,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.enabled = enabled;
+		this.role = role;
 	}
 
 	public int getId() {
@@ -108,6 +111,14 @@ public class User {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public List<Post> getPosts() {

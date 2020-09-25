@@ -26,4 +26,11 @@ class BreedRepositoryTest {
 		}
 
 	}
+	
+	@Test
+	void test_custom_query_breed_by_name() {
+		Breed breed = breedRepo.findBreedByName("Kacheeky");
+		assertNotNull(breed);
+		assertEquals("Kacheeky", breed.getName());
+	}
 }

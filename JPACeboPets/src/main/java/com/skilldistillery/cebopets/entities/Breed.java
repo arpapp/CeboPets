@@ -30,7 +30,6 @@ public class Breed {
 	private List<Cebopet> ceboPets;
 
 	public Breed() {
-		super();
 	}
 
 
