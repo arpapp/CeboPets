@@ -1,5 +1,15 @@
 <div>
-  <form #newCebopet='ngForm'>
+  <h4>Pick a Breed</h4>
+  <form>
+    <select>
+      <option value="Kacheeky">Kacheeky</option>
+      <option value="Kacheeky">TesterValue</option>
+    </select>
+    <button (click)='setBreedForCeboCreation()'>Submit</button>
+
+  </form>
+
+  <form #newCebopet='ngForm' *ngIf="breed">
     Name:<input type = "text" name="name" ngModel/>
     Gender:
 
@@ -10,11 +20,10 @@
       <option value="GENDERFLUID">Gender fluid</option>
       <option value="OTHER">Other</option>
     </select>
-
-    Breed:
-      <select name="breed" ngModel>
-        <option value="Kacheeky">Kacheeky</option>
-      </select>
+    <!-- Breed:
+    <select>
+      <option value = "Kacheeky" ngModel>Kacheeky</option>
+    </select> -->
 
       <button (click)='createCebopet(newCebopet)'>Submit</button>
   </form>
